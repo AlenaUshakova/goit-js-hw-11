@@ -29,6 +29,7 @@ const onEntry = entries => {
         Notify.failure(
           'We are sorry, but you have reached the end of search results.'
         );
+        observer.unobserve(sentinel);
       }
       lightbox.refresh();
     }
@@ -67,6 +68,12 @@ async function onPublishImg(event) {
     createCard(hits);
 
     lightbox.refresh();
+
+    if (totalHits <= 40) {
+      Notify.failure(
+        'We are sorry, but you have reached the end of search results.'
+      );
+    }
 
     Notify.success(`Hooray! We found ${totalHits} images.`);
 
