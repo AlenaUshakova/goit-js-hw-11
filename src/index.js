@@ -39,7 +39,6 @@ const onEntry = entries => {
 const observer = new IntersectionObserver(onEntry, {
   rootMargin: '150px',
 });
-observer.observe(sentinel);
 
 async function onPublishImg(event) {
   try {
@@ -66,6 +65,8 @@ async function onPublishImg(event) {
     }
 
     createCard(hits);
+
+    observer.observe(sentinel);
 
     lightbox.refresh();
 
